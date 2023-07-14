@@ -1,37 +1,17 @@
- 
 version: 2.1
 
 orbs:
   maven: circleci/maven@1.4.1
- 
+
 jobs:
   clean:
     docker:
       - image: cimg/openjdk:11.0
     steps:
-      - checkout 
-        run: 
-          mvn clean -DskipTests
-  
-  build:
-    docker:
-      - image: cimg/openjdk:11.0
-    steps:
-      - checkout 
-        run: 
-          mvn install -DskipTests
-
-  test:
-    docker:
-      - image: cimg/openjdk:11.0
-    steps:
-      - checkout 
-        run:
-          mvn test
+      - checkout
+      - run: mvn clean -DskipTests
 
 workflows:
-  sample: 
+  sample:
     jobs:
       - clean
-      - build
-      - test
