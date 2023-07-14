@@ -15,25 +15,23 @@ jobs:
     docker:
       - image: cimg/openjdk:11.0
     steps:
-      - checkout 
-      - run: 
-          mvn install -DskipTests
+      - checkout
+      - run: mvn install -DskipTests
 
   test:
     docker:
       - image: cimg/openjdk:11.0
     steps:
-      - checkout 
-      - run:
-          mvn test
+      - checkout
+      - run: mvn test
 
 workflows:
-  sample: 
+  sample:
     jobs:
       - clean
       - build:
-          requires: 
+          requires:
             - clean
-      - test
-          requires: 
+      - test:
+          requires:
             - build
