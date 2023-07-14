@@ -4,30 +4,30 @@ version: 2.1
 jobs:
   clean:
     docker:
-      - image : cimg/openjdk:11.0
+      - image: cimg/openjdk:11.0
     steps:
       - checkout 
-        run : 
+        run: 
           name: Clean
-          command : mvn clean -DskipTests
+          command: mvn clean -DskipTests
   
   build:
     docker:
       - image : cimg/openjdk:11.0
     steps:
       - checkout 
-        run : 
+        run: 
           name: build
           command : mvn install -DskipTests
 
   test:
     docker:
-      - image : cimg/openjdk:11.0
+      - image: cimg/openjdk:11.0
     steps:
       - checkout 
-        run : 
+        run: 
           name: Test
-          command : mvn test
+          command: mvn test
 
 workflows:
   sample: 
